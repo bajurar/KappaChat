@@ -31,9 +31,9 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odświeżToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.odświeżToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -82,23 +82,6 @@
             this.edycjaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.edycjaToolStripMenuItem.Text = "Edycja";
             // 
-            // opcjeToolStripMenuItem
-            // 
-            this.opcjeToolStripMenuItem.Name = "opcjeToolStripMenuItem";
-            this.opcjeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.opcjeToolStripMenuItem.Text = "Opcje";
-            // 
-            // pokażMenuToolStripMenuItem
-            // 
-            this.showMenuToolStripMenuItem.Checked = true;
-            this.showMenuToolStripMenuItem.CheckOnClick = true;
-            this.showMenuToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showMenuToolStripMenuItem.Name = "pokażMenuToolStripMenuItem";
-            this.showMenuToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.showMenuToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.showMenuToolStripMenuItem.Text = "Pokaż menu";
-            this.showMenuToolStripMenuItem.CheckedChanged += new System.EventHandler(this.showMenuToolStripMenuItem_CheckedChanged);
-            // 
             // odświeżToolStripMenuItem
             // 
             this.odświeżToolStripMenuItem.Name = "odświeżToolStripMenuItem";
@@ -106,12 +89,31 @@
             this.odświeżToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.odświeżToolStripMenuItem.Text = "Odśwież";
             // 
+            // opcjeToolStripMenuItem
+            // 
+            this.opcjeToolStripMenuItem.Name = "opcjeToolStripMenuItem";
+            this.opcjeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.opcjeToolStripMenuItem.Text = "Opcje";
+            this.opcjeToolStripMenuItem.Click += new System.EventHandler(this.opcjeToolStripMenuItem_Click);
+            // 
+            // showMenuToolStripMenuItem
+            // 
+            this.showMenuToolStripMenuItem.Checked = true;
+            this.showMenuToolStripMenuItem.CheckOnClick = true;
+            this.showMenuToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showMenuToolStripMenuItem.Name = "showMenuToolStripMenuItem";
+            this.showMenuToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
+            this.showMenuToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.showMenuToolStripMenuItem.Text = "Pokaż menu";
+            this.showMenuToolStripMenuItem.CheckedChanged += new System.EventHandler(this.showMenuToolStripMenuItem_CheckedChanged);
+            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.toolStripContainer1);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Browser";
             this.Text = "Browser";

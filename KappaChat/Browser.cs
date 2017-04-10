@@ -119,6 +119,14 @@ namespace KappaChat
             showMenuToolStripMenuItem.Checked = !showMenuToolStripMenuItem.Checked;
         }
 
-        
+        private void opcjeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var optionsForm = new Options();
+            var result = optionsForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                RefreshWebPage();
+            }
+        }
     }
 }
