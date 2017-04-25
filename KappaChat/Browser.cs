@@ -38,14 +38,19 @@ namespace KappaChat
             {
                 var script = "";
 
-                System.IO.TextReader tr = new System.IO.StreamReader(Properties.Settings.Default.ScriptPath);
-                script = tr.ReadToEnd();
+                if (System.IO.File.Exists(Properties.Settings.Default.ScriptPath))
+                {
+                    System.IO.TextReader tr = new System.IO.StreamReader(Properties.Settings.Default.ScriptPath);
+                    script = tr.ReadToEnd();
 
-                browser.GetMainFrame().ExecuteJavaScriptAsync(script);
+                    browser.GetMainFrame().ExecuteJavaScriptAsync(script);
+                }
+                if (System.IO.File.Exists(Properties.Settings.Default.StylePath))
+                {
+                    var loadStyleScript = string.Format("var style = document.createElement('style');style.innerHTML = '{0}';document.head.appendChild(style);", new System.IO.StreamReader(Properties.Settings.Default.StylePath).ReadToEnd().Replace(Environment.NewLine, " "));
 
-                var loadStyleScript =string.Format("var style = document.createElement('style');style.innerHTML = '{0}';document.head.appendChild(style);", new System.IO.StreamReader(Properties.Settings.Default.StylePath).ReadToEnd().Replace(Environment.NewLine, " "));
-
-                browser.GetMainFrame().ExecuteJavaScriptAsync(loadStyleScript);
+                    browser.GetMainFrame().ExecuteJavaScriptAsync(loadStyleScript);
+                }
                 scriptLoaded = true;
             }
         }

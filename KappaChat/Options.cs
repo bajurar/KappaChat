@@ -21,9 +21,18 @@ namespace KappaChat
         private void Options_Load(object sender, EventArgs e)
         {            
             textBox1.Text = Properties.Settings.Default.ChatPath;
-            var jsPath = System.IO.Path.GetFullPath(Properties.Settings.Default.ScriptPath);
+            var jsPath = "";
+
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.ScriptPath))
+            {
+                jsPath = System.IO.Path.GetFullPath(Properties.Settings.Default.ScriptPath);
+            }
             textBox2.Text = jsPath.ToString();
-            var cssPath = System.IO.Path.GetFullPath(Properties.Settings.Default.StylePath);
+            string cssPath = "";
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.StylePath))
+            {
+                cssPath = System.IO.Path.GetFullPath(Properties.Settings.Default.StylePath);
+            }
             textBox3.Text = cssPath.ToString();
         }
 
@@ -40,11 +49,16 @@ namespace KappaChat
         private void button3_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            var jsPath = System.IO.Path.GetFullPath(textBox2.Text);
-            var directoryPath = new FileInfo(jsPath).Directory.FullName;
-            if (Directory.Exists(directoryPath))
+            var jsPath = "";
+            if (!string.IsNullOrWhiteSpace(textBox2.Text))
             {
-                dialog.InitialDirectory = directoryPath;
+                jsPath = System.IO.Path.GetFullPath(textBox2.Text);
+
+                var directoryPath = new FileInfo(jsPath).Directory.FullName;
+                if (Directory.Exists(directoryPath))
+                {
+                    dialog.InitialDirectory = directoryPath;
+                }
             }
             var dialogResult = dialog.ShowDialog();
             if(dialogResult == DialogResult.OK)
@@ -57,11 +71,15 @@ namespace KappaChat
         private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            var cssPath = System.IO.Path.GetFullPath(textBox3.Text);
-            var directoryPath = new FileInfo(cssPath).Directory.FullName;
-            if (Directory.Exists(directoryPath))
+            var cssPath = "";
+            if (!string.IsNullOrWhiteSpace(textBox3.Text))
             {
-                dialog.InitialDirectory = directoryPath;
+                cssPath = System.IO.Path.GetFullPath(textBox3.Text);
+                var directoryPath = new FileInfo(cssPath).Directory.FullName;
+                if (Directory.Exists(directoryPath))
+                {
+                    dialog.InitialDirectory = directoryPath;
+                }
             }
             var dialogResult = dialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
